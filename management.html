@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+  Name: Nikhita Kannam, Christen De Ocampo
+  Date: 04/20/2021
+  Section: CSCI 355
+  This is the management.html page for the QCfirst website. 
+-->
+<html class="bg-instr" lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>QCFirst</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/search.js" defer></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+</head>
+    <body>
+        <main>
+            <header class = "header">
+                <div class="content-wrap">
+                    <a href="instr-home.html"><img src="img/Education_Guide_Logo_Round.png" alt="haha" width="150" height="150" class="responsive"></a>
+                    <h1 id="title-style">QCFirst</h1>
+                </div>
+                <nav class="navbar">
+                    <a href="#" class="toggle-button">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </a>
+                    <div class="navbar-links">
+                        <a href="instr-home.html">Instructor Home</a>
+                        <a class="active" href="management.html">Course Management</a>      
+                        <a href="index.html">Sign Out</a>
+                    </div>
+                </nav>
+            </header>
+            <div class="content-wrap">
+                <h2 id="background">Manage Courses</h2>
+            </div>
+            </section>
+            <div id="update"></div>
+            <section class="section-wrap">
+                <div class="content-wrap">
+                    <label for="search-bar">Courses Live Search: </label>
+                    <input id="search-bar" type="search" id="search-bar" name="search-bar" placeholder="Search For Course ID/Name...">
+                    <img class="responsive" src="img/magnifying-glass-4186151_640.png" alt="searchbar" width="15" height="15">
+                    <ul id="course-list"></ul>
+                </div>
+                 <div class="content-wrap">
+                    <a class="btn" href="instr-createcourse.html">Create Course</a>
+                    <a class="btn" href="instr-home.html">Back</a><br><br>
+                    <label for="id">Enter Course ID To Delete: </label><br>
+                    <input type="text" id="id"><br>
+                    <button class="btn" id="delete-course">Delete Course</button>
+                </div>
+            </section>
+            <footer class = "footer">
+                <p>Copyright &#169; 2021: By NC</p>
+            </footer>
+        </main>
+    </body>
+    <script src = "js/jquery.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBqDv2ClaYawwiiy4DBid_KU-L4uR1r99I",
+            authDomain: "qcfirst-instructor.firebaseapp.com",
+            projectId: "qcfirst-instructor",
+            storageBucket: "qcfirst-instructor.appspot.com",
+            messagingSenderId: "1017506719240",
+            appId: "1:1017506719240:web:d1dae44709c9bb037d53bd"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const courseId = document.getElementById('id');
+        const remove = document.getElementById('delete-course');
+        const database = firebase.database();
+        const rootRef = database.ref('courses');
+        remove.addEventListener('click', e => {
+            e.preventDefault();
+            rootRef.child(courseId.value).remove()
+            .then(() => {
+                window.alert("Course has been deleted from database");
+            })
+            .catch(error => {
+                console.error(error);
+            })
+        })
+    </script>
+</html>

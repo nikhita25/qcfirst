@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+  Name: Nikhita Kannam, Christen De Ocampo
+  Date: 04/20/2021
+  Section: CSCI 355
+  This is the enrollment.html page for the QCfirst website. 
+-->
+<html class = "bg-student" lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>QCFirst</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="js/search.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+</head>
+    <body>
+        <main>
+            <header class = "header">
+                <div class="content-wrap">
+                    <a href="student-home.html"><img src="img/Education_Guide_Logo_Round.png" alt="haha" width="150" height="150" class="responsive"></a>
+                    <h1 id="title-style">QCFirst</h1>
+                </div>
+               <nav class="navbar">
+                    <a href="#" class="toggle-button">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </a>
+                    <div class="navbar-links">
+                        <a href="student-home.html">Student Home</a>      
+                        <a class="active" href="enrollment.html">Enrollment Page</a> 
+                        <a href="index.html">Sign Out</a>
+                    </div>
+                </nav>
+            </header>
+            <div class="content-wrap">
+                <h4 id = "background-1">Search for courses below. Select the courses you wish to enroll in and click "Enroll"
+                </br></h4>
+            </div>
+            <section >
+                <div id="update"></div>
+                <section class="section-wrap">
+                    <div class="content-wrap">
+                        <label for="search-bar">Courses Live Search: </label>
+                        <input id="search-bar" type="search" id="search-bar" name="search-bar" placeholder="Search For Course ID/Name...">
+                        <img class="responsive" src="img/magnifying-glass-4186151_640.png" alt="searchbar" width="15" height="15">
+                        <ul id="course-list"></ul>
+                    </div>
+                    <!-- <a class="btn" href="student-home.html">ENROLL</a> -->
+                    <input type="text" id="enroll-course" placeholder="Enter Course ID to enroll..."/>
+                    <input type="button" id="btnAdd" value="Enroll" onclick="addItem()">
+                </section>
+                <h3 id = "background-1"> Schedule </h3>
+                <section class = "section-wrap" id="enrollment-wrap">
+                    <div class="content-wrap">
+                        <ol class = "schedule-1" id="student-courses">
+                            <li>ANTH 102 12:00PM to 1:45PM Tuesday/Thursday</li>
+                        </ol>
+                    </div>
+                    <a class="btn" href="student-home.html">Back</a>
+                </section>
+                </div>
+            </section>
+            <footer class = "footer">
+                <p>Copyright &#169; 2021: By NC</p>
+            </footer>
+        </main>
+    </body>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBqDv2ClaYawwiiy4DBid_KU-L4uR1r99I",
+            authDomain: "qcfirst-instructor.firebaseapp.com",
+            projectId: "qcfirst-instructor",
+            storageBucket: "qcfirst-instructor.appspot.com",
+            messagingSenderId: "1017506719240",
+            appId: "1:1017506719240:web:d1dae44709c9bb037d53bd"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+    </script>
+</html>
